@@ -1,0 +1,61 @@
+package gestion;
+import cliente.Cliente;
+/**
+ *
+ * @author felix
+ */
+public class GestionArrayClientes {
+    private Cliente[] listaClientes = new Cliente[25];
+        
+    public GestionArrayClientes() {
+    }
+    
+    public void add(Cliente cliente){
+        for (int i = 0; i < listaClientes.length; i++) {
+            if (listaClientes[i] == null) {
+                listaClientes[i] = cliente;
+                break;
+            }
+        }
+    }
+    public void delete(int codCliente){
+        for (int i = 0; i < listaClientes.length; i++) {
+            if (listaClientes[i].getCodCliente() == codCliente) {
+                System.out.println("El cliente "+listaClientes[i].getNombre()+ " fue borrado del sistema");
+                listaClientes[i] = null;
+                break;
+            }
+        }
+    }
+    public void upDate(Cliente cliente){
+        int codigoModificar=0;
+        for (int cod = 0; cod < listaClientes.length; cod++) {
+            if (cliente.getCodCliente()== listaClientes[cod].getCodCliente()) {
+                codigoModificar = cod;//posicion del objto a modificar
+                break;
+            }
+        }
+            if (cliente.getNombre()!= null && !cliente.getNombre().equals("")) {
+                listaClientes[codigoModificar].setNombre(cliente.getNombre());
+            }
+        
+        //System.out.println(listaClientes[codigoModificar].toString());
+        
+    }
+    public Cliente find(String nombre){
+        Cliente clienteEncontrado = null;
+        for (int i = 0; i < listaClientes.length; i++) {
+            if (listaClientes[i].getNombre().equals(nombre)) {
+                clienteEncontrado = listaClientes[i];
+                break;
+            }
+        }
+        return clienteEncontrado;
+    }
+    public void findAll(Cliente cliente){
+        for (int i = 0; i < listaClientes.length; i++) {
+            cliente = listaClientes[i];
+            break;
+        }
+    }
+}
