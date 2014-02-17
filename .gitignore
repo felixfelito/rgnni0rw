@@ -1,0 +1,94 @@
+package teoriaherencia;
+import cliente.Cliente;
+import gestion.GestionArrayClientes;
+import java.util.Scanner;
+/**
+ *
+ * @author felix
+ */
+public class EntidadBancoSantander {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int funcion;
+        int id =1;
+        boolean respuesta;
+        GestionArrayClientes gestionArrayClientes = new GestionArrayClientes();
+        
+        System.out.println("Interte el comando correspondiente a la operacionq ue quiere realizar");
+        do{
+        do{
+        System.out.println("1-Insertar");
+        System.out.println("2-Eliminar");
+        System.out.println("3-Buscar");
+        System.out.println("4-Modificar");
+        System.out.println("5-Listar Todos");
+        System.out.println("6-fin del programa");
+        System.out.println("Realizar operacion :");
+        funcion=sc.nextInt();
+        if(funcion>=7 || funcion<=0){
+            System.out.println("El valor indicado no es valido, inserte otro comando");
+            respuesta=true;
+        }else{
+            respuesta=false;
+        }
+        }while(respuesta);
+        switch (funcion){
+            
+                case 1:
+                Cliente cliente = new Cliente();
+                System.out.println("Datos de un nuevo cliente");
+                System.out.println("Implantando un Codigo de identidad al cliente");
+                cliente.setCodCliente(id);
+                System.out.println("Su id es : "+id);
+                id++;
+                System.out.println("Nombre :");
+                cliente.setNombre(sc.next());
+                System.out.println("Apellido :");
+                cliente.setApellido(sc.next());
+                System.out.println("telefono .");
+                cliente.setTelefono(sc.nextInt());
+                System.out.println("Saldo :");
+                cliente.setSaldo(sc.nextDouble());
+                
+                gestionArrayClientes.add(cliente);
+                break;
+                    
+                case 2:
+                System.out.println("Indique el codigo de identificacion del cliente el cual desea eliminar");
+                int codCliente = sc.nextInt();
+                gestionArrayClientes.delete(codCliente);     
+                break;
+                    
+                case 3:
+                //Cliente cliente3 = new Cliente();
+                System.out.println("Dame el nombre del cliente que deseas buscar");
+                String NomCliente = sc.next();
+                Cliente clienteBuscado = gestionArrayClientes.find(NomCliente);
+                System.out.println(clienteBuscado);
+                break;
+                    
+                case 4:
+                System.out.println("Indique el codigo de identificacion del cliente del cual dsea modificar los datos");
+                int cod = sc.nextInt();
+                System.out.println("Introduzca el nuevo nombre");
+                String nombre = sc.next();
+                Cliente cliente4 = new Cliente();
+                cliente4.setCodCliente(cod);
+                cliente4.setNombre(nombre);
+                gestionArrayClientes.upDate(cliente4);    
+                break;
+                    
+                case 5:
+                Cliente cliente5 = new Cliente();    
+                gestionArrayClientes.findAll(cliente5);
+                System.out.println(cliente5);
+                break;
+                    
+                case 6:
+                System.out.println("Fin de programa");
+                break;
+        }
+        }while(funcion!=6);
+        
+     }
+}
