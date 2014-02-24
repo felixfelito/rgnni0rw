@@ -5,7 +5,8 @@ package cliente;
  */
 public class Cliente {
     private int codCliente, telefono;
-    private String nombre, apellido;
+    private String nombre;
+    private String apellido;
     private double saldo;
 
     public Cliente() {
