@@ -4,10 +4,8 @@ package cliente;
  * @author felix
  */
 public class Cliente {
-    private int codCliente;
-    private int telefono;
-    private String nombre;
-    private String apellido;
+    private int codCliente, telefono;
+    private String nombre, apellido;
     private double saldo;
 
     public Cliente() {
